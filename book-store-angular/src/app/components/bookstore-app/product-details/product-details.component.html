@@ -1,0 +1,42 @@
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="card shadow-sw my-2">
+
+        <div class="row">
+            <div class="col align-center">
+                <div class="center">
+                    <img class="bd-placeholder-img" width="300px" height="400px" src='{{book.imageUrl}}'>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-body">
+
+                    <h5 class="card-title text-center"><b>{{book.name}}</b></h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Autor</b>: {{book.author}}</li>
+                        <li class="list-group-item"><b>ISBN</b>: {{book.isbn}}</li>
+                        <li class="list-group-item"><b>Categoria</b>: {{book.category}}</li>
+                        <li class="list-group-item"><b>Idioma</b>: {{book.idiom}}</li>
+                        <li class="list-group-item"><b>Ano da publicação</b>: {{book.date}}</li>
+                        <li class="list-group-item"><b>Preço</b>: {{book.price | currency:'BRL'}}</li>
+                        <li class="list-group-item">
+                            <div [ngSwitch]="truncateRating(book.rating)">
+                                <div *ngSwitchCase="1"><b>Avaliação</b>: {{book.rating}} (Ruim)</div>
+                                <div *ngSwitchCase="2"><b>Avaliação</b>: {{book.rating}} (Regular)</div>
+                                <div *ngSwitchCase="3"><b>Avaliação</b>: {{book.rating}} (Bom)</div>
+                                <div *ngSwitchCase="4"><b>Avaliação</b>: {{book.rating}} (Muito bom)</div>
+                                <div *ngSwitchCase="5"><b>Avaliação</b>: {{book.rating}} (Excelente)</div>
+                                <div *ngSwitchDefault><b>Avaliação</b>: {{book.rating}} (Não classificado)</div>
+                                <book-store-rating [rating-value]="book.rating"></book-store-rating>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h5 class="card-title text-center"><b>Descrição</b></h5>
+            <p>{{book.description}}</p>
+        </div>
+    </div>
+</div>

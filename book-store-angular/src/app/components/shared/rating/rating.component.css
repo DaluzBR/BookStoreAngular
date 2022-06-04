@@ -1,0 +1,8 @@
+.crop {
+    overflow: hidden;
+}
+
+.star {
+    color: #fdd835;
+    text-shadow: 1px 1px 1px black;
+}

@@ -1,0 +1,31 @@
+<div class="card shadow-sw my-2">
+
+    <img class="bd-placeholder-img card-img-top" width="100px" height="400px" src='{{book.imageUrl}}'>
+
+    <div class="card-body">
+        <h5 class="card-title"><b>{{book.name | truncate:45}}</b></h5>
+    </div>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Autor</b>: {{book.author}}</li>
+        <li class="list-group-item"><b>Categoria</b>: {{book.category}}</li>
+        <li class="list-group-item"><b>Preço</b>: {{book.price | currency:'BRL'}}</li>
+        <li class="list-group-item">
+
+            <div [ngSwitch]="truncateRating(book.rating)">
+                <div *ngSwitchCase="1"><b>Avaliação</b>: {{book.rating}} (Ruim)</div>
+                <div *ngSwitchCase="2"><b>Avaliação</b>: {{book.rating}} (Regular)</div>
+                <div *ngSwitchCase="3"><b>Avaliação</b>: {{book.rating}} (Bom)</div>
+                <div *ngSwitchCase="4"><b>Avaliação</b>: {{book.rating}} (Muito bom)</div>
+                <div *ngSwitchCase="5"><b>Avaliação</b>: {{book.rating}} (Excelente)</div>
+                <div *ngSwitchDefault><b>Avaliação</b>: {{book.rating}} (Não classificado)</div>
+                <book-store-rating [rating-value]="book.rating"></book-store-rating>
+            </div>
+        </li>
+    </ul>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary mx-2 my-2" [routerLink]="['/purchase', book.id]">Comprar</button>
+        <button type="button" class="btn btn-secondary mx-2 my-2" [routerLink]="['/details', book.id]">Detalhes</button>
+    </div>
+</div>
